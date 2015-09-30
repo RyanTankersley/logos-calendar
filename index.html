@@ -1,0 +1,85 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		
+		<title>Logos Calendar</title>
+		
+		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="styles/site.css">
+		<link rel='stylesheet' href='bower_components/fullcalendar/dist/fullcalendar.min.css' />
+		
+	</head>
+	<body>
+		<div class="banner-wrap wsite-background wsite-custom-background">
+			<div class="container">
+				<div class="banner">
+					<h2 class="main-header-text">
+						Church Events
+					</h2>
+					<p class="main-header-sub-text">
+						FINDING TRUE JOY IS A FIGHT. WE WANT TO FIGHT BESIDE YOU
+					</p>
+				</div>
+			</div>
+		</div>
+				
+		<div class="container body-content">
+			<div class="row">
+				<div class="col-xs-12 col-md-offset-3 col-md-6 main-card">
+					<div id='logos-calendar'></div>
+				</div>
+			</div>
+		</div>
+		
+		<footer class="footer">
+			<div style="text-align: center;">
+				<p class="footer-text">faith - family - truth</p>
+			</div>
+			<div class="copyright-wrapper">
+				<a class="copyright" href="http://blog.tankstudios.net">&copy; Tank Studios 2015</a>
+			</div>
+		</footer>
+		
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title" id="modal-title">Modal title</h2>
+      </div>
+      <div class="modal-body">
+        <p><strong>Starts: </strong><span id="modal-start"></span></p>
+        <p><strong>Ends: </strong><span id="modal-end"></span></p>
+        <p><strong>Description</strong></p>
+		<p id="modal-description"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+		<script src='bower_components/jquery/dist/jquery.min.js'></script>
+		<script src='node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
+		<script src='bower_components/moment/min/moment.min.js'></script>
+		<script src='bower_components/fullcalendar/dist/fullcalendar.min.js'></script>
+		<script src='scripts/events.js'></script>
+		<script>
+			$('#logos-calendar').fullCalendar({
+					events: events,
+					eventClick: function(eventItem, jsEvent, view) {
+						document.getElementById('modal-title').innerHTML = eventItem.title;
+						document.getElementById('modal-start').innerHTML = moment(eventItem.start).format('MMMM Do YYYY, h:mm:ss a');
+						document.getElementById('modal-end').innerHTML = moment(eventItem.end).format('MMMM Do YYYY, h:mm:ss a');
+						document.getElementById('modal-description').innerHTML = eventItem.description;
+						$('#myModal').modal({
+        					show: 'true'
+    					});
+					}
+				});
+		</script>
+	</body>
+</html>
