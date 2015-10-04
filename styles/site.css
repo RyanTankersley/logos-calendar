@@ -100,10 +100,10 @@ footer {
 @media (max-device-width: 480px)
 {
 	.main-header-text {
-		font-size:200px;
+		font-size:150px;
 	}
 	
 	.main-header-sub-text {
-		font-size:50px;
+		font-size:40px;
 	}
 }
