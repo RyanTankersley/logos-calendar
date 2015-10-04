@@ -96,3 +96,14 @@ footer {
 		margin-left: 0;
 	}
 }
+
+@media (max-device-width: 480px)
+{
+	.main-header-text {
+		font-size:200px;
+	}
+	
+	.main-header-sub-text {
+		font-size:50px;
+	}
+}
